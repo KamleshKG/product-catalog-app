@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "uipath_testing",
+    "description": "d",
+    "price": 2323.0,
+    "category": "sportsd"
+  },
+  {
+    "id": 3,
+    "name": "UIpackage",
+    "description": "ui",
+    "price": 555.0,
+    "category": "software"
+  },
+  {
+    "id": 3,
+    "name": "pharma",
+    "description": "pharma",
+    "price": 56565.0,
+    "category": "pharma"
+  }
+]

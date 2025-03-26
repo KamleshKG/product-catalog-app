@@ -1,0 +1,31 @@
+name: Flask CI
+
+on:
+  push:
+    branches:
+      - master # Or your main development branch (e.g., main)
+  pull_request:
+    branches:
+      - master # Or your main development branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3 # Checks out your repository code
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x' # Replace with your desired Python version
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt # Assuming you have a requirements.txt file
+      - name: Run Tests (Optional)
+        run: pytest # Replace with your testing command if you have tests
+      - name: Run Flask Application (Basic Check)
+        run: |
+          export FLASK_APP=app.py # Assuming your main Flask app file is app.py
+          python -m flask run --host=0.0.0.0 --port=5000 & # Run in the background (for a quick check)
+          sleep 10 # Give it some time to start (adjust as needed)
+          curl http://localhost:5000/products || echo "Flask app did not start or returned an error"
