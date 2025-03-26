@@ -6,13 +6,17 @@ import time
 import logging
 from flask_session import Session
 from prometheus_client import Counter, Histogram, Gauge, generate_latest, CONTENT_TYPE_LATEST
+import redis
 
 app = Flask(__name__)
 
 # --- Configure Session using Redis ---
 REDIS_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379/0')
 app.config['SESSION_TYPE'] = 'redis'
-app.config['SESSION_REDIS'] = REDIS_URL
+app.config['SESSION_REDIS'] = redis.Redis(host='localhost', port=6379, db=0)
+app.config["SESSION_REDIS_URL"] = 'redis://localhost:6379/0'
+REDIS_URL = 'redis://localhost:6379/0'
+
 Session(app)
 
 # --- Prometheus Metrics ---
