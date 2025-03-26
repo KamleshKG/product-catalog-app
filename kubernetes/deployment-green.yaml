@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-catalog-deployment-green
+  labels:
+    app: product-catalog
+    environment: green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: product-catalog
+      environment: green
+  template:
+    metadata:
+      labels:
+        app: product-catalog
+        environment: green
+    spec:
+      containers:
+      - name: product-catalog-app
+        image: your-docker-registry/product-catalog-app:latest # Replace with your new version image
+        ports:
+        - containerPort: 5000
+        - containerPort: 8080
+          name: metrics
+        env:
+        - name: USERS_FILE
+          value: /app/data/users.json
+        - name: PRODUCTS_FILE
+          value: /app/data/products.json
+        - name: AUDIT_LOG_FILE
+          value: /app/data/audit.log
+        - name: REDIS_URL
+          value: redis://redis-service:6379/0
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 5

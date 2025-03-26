@@ -1,0 +1,355 @@
+2025-03-26 11:33:48,405 - WARNING - app - USERS_FILE not found, created default at data/users.json
+2025-03-26 11:33:49,686 - INFO - _internal - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.38:5000
+2025-03-26 11:33:49,686 - INFO - _internal - [33mPress CTRL+C to quit[0m
+2025-03-26 11:34:06,032 - ERROR - app - Exception on / [GET]
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 559, in connect
+    sock = self._connect()
+           ^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 615, in _connect
+    raise err
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 603, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 1510, in wsgi_app
+    ctx.push()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\ctx.py", line 386, in push
+    self.session = session_interface.open_session(self.app, self.request)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\base.py", line 350, in open_session
+    saved_session_data = self._retrieve_session_data(store_id)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\redis\redis.py", line 64, in _retrieve_session_data
+    serialized_session_data = self.client.get(store_id)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 1606, in get
+    return self.execute_command('GET', name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 898, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 1192, in get_connection
+    connection.connect()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 563, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-03-26 11:34:06,090 - ERROR - app - Request finalizing failed with an error while handling an error
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 559, in connect
+    sock = self._connect()
+           ^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 615, in _connect
+    raise err
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 603, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 1510, in wsgi_app
+    ctx.push()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\ctx.py", line 386, in push
+    self.session = session_interface.open_session(self.app, self.request)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\base.py", line 350, in open_session
+    saved_session_data = self._retrieve_session_data(store_id)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\redis\redis.py", line 64, in _retrieve_session_data
+    serialized_session_data = self.client.get(store_id)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 1606, in get
+    return self.execute_command('GET', name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 898, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 1192, in get_connection
+    connection.connect()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 563, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 941, in finalize_request
+    response = self.process_response(response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 1322, in process_response
+    self.session_interface.save_session(self, ctx.session, response)
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\base.py", line 284, in save_session
+    store_id = self._get_store_id(session.sid)
+                                  ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'sid'
+2025-03-26 11:34:06,091 - INFO - _internal - 127.0.0.1 - - [26/Mar/2025 11:34:06] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-03-26 11:34:10,136 - ERROR - app - Exception on / [GET]
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 559, in connect
+    sock = self._connect()
+           ^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 615, in _connect
+    raise err
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 603, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 1510, in wsgi_app
+    ctx.push()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\ctx.py", line 386, in push
+    self.session = session_interface.open_session(self.app, self.request)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\base.py", line 350, in open_session
+    saved_session_data = self._retrieve_session_data(store_id)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\redis\redis.py", line 64, in _retrieve_session_data
+    serialized_session_data = self.client.get(store_id)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 1606, in get
+    return self.execute_command('GET', name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 898, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 1192, in get_connection
+    connection.connect()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 563, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-03-26 11:34:10,141 - ERROR - app - Request finalizing failed with an error while handling an error
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 559, in connect
+    sock = self._connect()
+           ^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 615, in _connect
+    raise err
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 603, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 1510, in wsgi_app
+    ctx.push()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\ctx.py", line 386, in push
+    self.session = session_interface.open_session(self.app, self.request)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\base.py", line 350, in open_session
+    saved_session_data = self._retrieve_session_data(store_id)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\redis\redis.py", line 64, in _retrieve_session_data
+    serialized_session_data = self.client.get(store_id)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 1606, in get
+    return self.execute_command('GET', name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 898, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 1192, in get_connection
+    connection.connect()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 563, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 941, in finalize_request
+    response = self.process_response(response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 1322, in process_response
+    self.session_interface.save_session(self, ctx.session, response)
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\base.py", line 284, in save_session
+    store_id = self._get_store_id(session.sid)
+                                  ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'sid'
+2025-03-26 11:34:10,142 - INFO - _internal - 127.0.0.1 - - [26/Mar/2025 11:34:10] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-03-26 11:34:39,570 - ERROR - app - Exception on / [GET]
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 559, in connect
+    sock = self._connect()
+           ^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 615, in _connect
+    raise err
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 603, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 1510, in wsgi_app
+    ctx.push()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\ctx.py", line 386, in push
+    self.session = session_interface.open_session(self.app, self.request)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\base.py", line 350, in open_session
+    saved_session_data = self._retrieve_session_data(store_id)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\redis\redis.py", line 64, in _retrieve_session_data
+    serialized_session_data = self.client.get(store_id)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 1606, in get
+    return self.execute_command('GET', name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 898, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 1192, in get_connection
+    connection.connect()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 563, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-03-26 11:34:39,575 - ERROR - app - Request finalizing failed with an error while handling an error
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 559, in connect
+    sock = self._connect()
+           ^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 615, in _connect
+    raise err
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 603, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 1510, in wsgi_app
+    ctx.push()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\ctx.py", line 386, in push
+    self.session = session_interface.open_session(self.app, self.request)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\base.py", line 350, in open_session
+    saved_session_data = self._retrieve_session_data(store_id)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\redis\redis.py", line 64, in _retrieve_session_data
+    serialized_session_data = self.client.get(store_id)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 1606, in get
+    return self.execute_command('GET', name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 898, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 1192, in get_connection
+    connection.connect()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 563, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 941, in finalize_request
+    response = self.process_response(response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 1322, in process_response
+    self.session_interface.save_session(self, ctx.session, response)
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\base.py", line 284, in save_session
+    store_id = self._get_store_id(session.sid)
+                                  ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'sid'
+2025-03-26 11:34:39,576 - INFO - _internal - 127.0.0.1 - - [26/Mar/2025 11:34:39] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-03-26 11:34:46,072 - ERROR - app - Exception on /login [GET]
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 559, in connect
+    sock = self._connect()
+           ^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 615, in _connect
+    raise err
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 603, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 1510, in wsgi_app
+    ctx.push()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\ctx.py", line 386, in push
+    self.session = session_interface.open_session(self.app, self.request)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\base.py", line 350, in open_session
+    saved_session_data = self._retrieve_session_data(store_id)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\redis\redis.py", line 64, in _retrieve_session_data
+    serialized_session_data = self.client.get(store_id)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 1606, in get
+    return self.execute_command('GET', name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 898, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 1192, in get_connection
+    connection.connect()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 563, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-03-26 11:34:46,074 - ERROR - app - Request finalizing failed with an error while handling an error
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 559, in connect
+    sock = self._connect()
+           ^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 615, in _connect
+    raise err
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 603, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 1510, in wsgi_app
+    ctx.push()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\ctx.py", line 386, in push
+    self.session = session_interface.open_session(self.app, self.request)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\base.py", line 350, in open_session
+    saved_session_data = self._retrieve_session_data(store_id)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\redis\redis.py", line 64, in _retrieve_session_data
+    serialized_session_data = self.client.get(store_id)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 1606, in get
+    return self.execute_command('GET', name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\client.py", line 898, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 1192, in get_connection
+    connection.connect()
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\redis\connection.py", line 563, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 941, in finalize_request
+    response = self.process_response(response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask\app.py", line 1322, in process_response
+    self.session_interface.save_session(self, ctx.session, response)
+  File "E:\PYTHON_PROJECTS\v11\Lib\site-packages\flask_session\base.py", line 284, in save_session
+    store_id = self._get_store_id(session.sid)
+                                  ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'sid'
+2025-03-26 11:34:46,075 - INFO - _internal - 127.0.0.1 - - [26/Mar/2025 11:34:46] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+2025-03-26 11:35:09,321 - INFO - _internal - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.38:5000
+2025-03-26 11:35:09,321 - INFO - _internal - [33mPress CTRL+C to quit[0m

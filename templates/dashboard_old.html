@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .dashboard-item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .deployment-item {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .status-success { color: green; }
+        .status-failed { color: red; }
+        .status-deploying { color: orange; }
+        .build-failed { color: darkred; font-weight: bold; }
+        .deployment-failed { color: maroon; font-weight: bold; }
+        .traffic-indicator {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .traffic-blue { color: blue; }
+        .traffic-green { color: green; }
+        .traffic-unknown { color: gray; }
+        .rectify-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.8em;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <span>Welcome, {{ session['user'] }} ({{ session['user_role'] }}) | <a href="{{ url_for('logout') }}">Logout</a></span>
+        {% if session['user_role'] == 'admin' %}
+            <a href="{{ url_for('add_product') }}">Add Product</a> |
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        {% endif %}
+    </nav>
+
+    <div class="container">
+        <h1>Dashboard</h1>
+
+        <div class="dashboard-item">
+            <h2>Deployment History</h2>
+            {% if deployment_history %}
+                <ul>
+                {% for deploy in deployment_history %}
+                    <li class="deployment-item">
+                        Commit: {{ deploy.commit[:7] }} - {{ deploy.timestamp }} -
+                        Build: <span class="{% if deploy.build_status == 'failed' %}build-failed{% else %}status-success{% endif %}">{{ deploy.build_status|capitalize }}</span> |
+                        Status: <span class="{% if deploy.status == 'success' %}status-success{% elif deploy.status == 'failed' %}deployment-failed{% else %}status-deploying{% endif %}">{{ deploy.status|capitalize }}</span>
+                        (Environment: {{ deploy.environment|capitalize }})
+                        {% if deploy.status == 'failed' or deploy.build_status == 'failed' %}
+                            <a href="{{ url_for('rectify', commit_hash=deploy.commit) }}" class="rectify-button">Rectify</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No deployment history available.</p>
+            {% endif %}
+        </div>
+
+        <div class="dashboard-item">
+            <h2>Current Traffic</h2>
+            <p class="traffic-indicator {% if current_environment == 'Green' %}traffic-green{% elif current_environment == 'Blue' %}traffic-blue{% else %}traffic-unknown{% endif %}">
+                Current Environment: {{ current_environment }}
+            </p>
+            <p>This is a basic indicator based on service selector labels. In a real setup, this would be determined by the load balancer/Ingress.</p>
+        </div>
+
+        <div class="dashboard-item">
+            <h2>Product Actions & User Activity</h2>
+            <ul>
+                <li>Products Added: {{ product_add_count }}</li>
+                <li>Products Edited: {{ product_edit_count }}</li>
+                <li>Products Deleted: {{ product_delete_count }}</li>
+                <li>Login Attempts: {{ login_attempt_count }}</li>
+                <li>Successful Logins: {{ login_success_count }}</li>
+            </ul>
+        </div>
+
+        <p><a href="{{ url_for('index') }}">Back to Home</a></p>
+    </div>
+</body>
+</html>

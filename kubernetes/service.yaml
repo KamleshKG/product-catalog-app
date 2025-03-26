@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-catalog-service
+  labels:
+    app: product-catalog
+spec:
+  selector: # Initially point to the Blue environment
+    app: product-catalog
+    environment: blue
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      name: metrics
+  type: LoadBalancer # Or ClusterIP if you use an Ingress

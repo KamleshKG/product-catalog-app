@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - USERS_FILE=/app/data/users.json
+      - PRODUCTS_FILE=/app/data/products.json
+      - AUDIT_LOG_FILE=/app/data/audit.log
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+    volumes:
+      - ./data:/app/data
+      - ./kubernetes:/app/kubernetes # Optional: If you want to access k8s files
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data:/app/data
+      - redis_data:/data
+
+volumes:
+  redis_data:

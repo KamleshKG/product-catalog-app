@@ -1,0 +1,14 @@
+{
+  "guest_user": {
+    "password": "guest_password",
+    "role": "guest"
+  },
+  "customer1": {
+    "password": "customer_password",
+    "role": "customer"
+  },
+  "admin1": {
+    "password": "admin_password",
+    "role": "admin"
+  }
+}
